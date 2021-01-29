@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RPG
 {
-    class BassKlass
+    abstract class BassKlass
     {
         
         private protected string Name = null;

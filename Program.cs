@@ -38,10 +38,10 @@ namespace RPG
                         int xp = rnd.Next(300,500);
 
 
+                        var Monster1 = new Monster("kileer", 0, power, xp, domag ,armour, 0, 1);
 
 
                         
-                        var Monster1 = new Monster("kileer", 0, power, xp, domag ,armour, 0, 1);
 
                         
                         if (0 == lvl % 10)
@@ -77,6 +77,7 @@ namespace RPG
                             
                             
                         }
+
                         Console.WriteLine("Вы убили мностра ");
                         
                         lvl++;
@@ -95,7 +96,7 @@ namespace RPG
 
                     int lvl = 0;
 
-                    while (20 > lvl || !Magic1.lifeGeroi())
+                    while (20 > lvl && !Magic1.lifeGeroi())
                     {
                         if(0==lvl%10)
                         Console.WriteLine("ВЫ наткнулись на монстра ");
