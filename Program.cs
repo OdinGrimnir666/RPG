@@ -9,6 +9,7 @@ namespace RPG
         {
             Random rnd = new Random();
             BassKlass Player = null;
+            BassKlass Monster1 = null;
             Console.WriteLine("готовы Пойти в подземелья и поучаствовать в битвах ? ");
             Console.WriteLine("Напишите (да) и мы продолжим");
             string Start = Console.ReadLine();
@@ -39,6 +40,7 @@ namespace RPG
                 {
 
                     Console.WriteLine("ВЫ наткнулись на монстра ");
+                    lvl++;
                     int p = 0, i = 0;
                     int power = rnd.Next(40, 50);
                     int domag = rnd.Next(70, 100);
@@ -46,20 +48,19 @@ namespace RPG
                     int xp = rnd.Next(300, 500);
 
 
-                    var Monster1 = new Monster("kileer", power, xp, domag, armour, 1);
-
-
-
-
-
                     if (0 == lvl % 10)
                     {
                         Console.WriteLine("ВЫ апнули статы");
                         Player.lvlup();
                         Console.WriteLine("Монстор стал сильнее");
+                       
+                        Console.WriteLine("Вы наппали на боса монстров");
+                        Monster1 = new Bosmonster("Bosskiller", rnd.Next(40,50), rnd.Next(300,500), rnd.Next(70,100), rnd.Next(30,60), 1);
                         Monster1.lvlup();
-
-
+                    }
+                    else
+                    {
+                        Monster1 = new Monster("kileer", rnd.Next(50, 60), rnd.Next(400, 600), rnd.Next(70,100), rnd.Next(40,70), 1);
                     }
 
 
@@ -68,7 +69,7 @@ namespace RPG
 
                         ++i;
                         var PlayerAtack = Player.Ataaka();
-                        Console.WriteLine($"Вы бьете монстра {i} c атакой {PlayerAtack}");
+                        Console.WriteLine($"Вы бьете {Monster1.MameInfo()} монстра {i} c атакой {PlayerAtack}");
                         var Def = Monster1.Zachita(PlayerAtack);
                         if (Def == 0)
                         {
@@ -91,7 +92,7 @@ namespace RPG
                         }
 
                         //  Monster1.proverka();
-                        Thread.Sleep(10000);//замедление
+                        Thread.Sleep(4000);//замедление
 
                         if (Monster1.IsAlive())
                         {
@@ -109,8 +110,9 @@ namespace RPG
                     }
 
                     Console.WriteLine("Вы убили мностра ");
+                    Console.WriteLine($"Вознаграждение за убийство{Player.Moneyplus(Monster1.InfoRasa())}");
 
-                    lvl++;
+                    
                     Console.WriteLine("переходим на лвл выше");
                 }
                 Console.WriteLine("ВЫ мертвы");

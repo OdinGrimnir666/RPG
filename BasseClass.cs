@@ -6,7 +6,7 @@ namespace RPG
 {
     abstract class BassKlass
     {
-
+        
         private protected string Name = null;
 
         private protected string rasa = null;
@@ -98,6 +98,19 @@ namespace RPG
 
             Console.WriteLine($"{this.xp}");
         }
+        public string MameInfo()
+        {
+            return Name;
+        }
+        public virtual int Moneyplus(string rasamob)
+        {
+            return money;
+        }
+        public string InfoRasa()
+        {
+            return this.rasa;
+        }
+        
 
 
     }
