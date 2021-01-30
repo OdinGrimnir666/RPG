@@ -102,10 +102,6 @@ namespace RPG
         {
             return Name;
         }
-        public virtual int Moneyplus(string rasamob)
-        {
-            return money;
-        }
         public string InfoRasa()
         {
             return this.rasa;

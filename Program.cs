@@ -42,10 +42,7 @@ namespace RPG
                     Console.WriteLine("ВЫ наткнулись на монстра ");
                     lvl++;
                     int p = 0, i = 0;
-                    int power = rnd.Next(40, 50);
-                    int domag = rnd.Next(70, 100);
-                    int armour = rnd.Next(30, 60);
-                    int xp = rnd.Next(300, 500);
+
 
 
                     if (0 == lvl % 10)
@@ -60,7 +57,7 @@ namespace RPG
                     }
                     else
                     {
-                        Monster1 = new Monster("kileer", rnd.Next(50, 60), rnd.Next(400, 600), rnd.Next(70,100), rnd.Next(40,70), 1);
+                        Monster1 = new Monster("kileer", rnd.Next(50, 60), rnd.Next(400, 600), rnd.Next(120,160), rnd.Next(40,70), 1);
                     }
 
 
@@ -110,7 +107,8 @@ namespace RPG
                     }
 
                     Console.WriteLine("Вы убили мностра ");
-                    Console.WriteLine($"Вознаграждение за убийство{Player.Moneyplus(Monster1.InfoRasa())}");
+                    Console.WriteLine($"Вознаграждение за убийство{}");
+                   
 
                     
                     Console.WriteLine("переходим на лвл выше");

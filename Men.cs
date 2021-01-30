@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace RPG
 {
@@ -13,25 +11,14 @@ namespace RPG
 
         }
         public Man(string name, int power, int xp, int domag, int armour, int speedAtak)
-            : base(name, power, xp, domag, armour, speedAtak) { rasa = "men"; }
-        public override int Moneyplus(string rasamob)
+            : base(name, power, xp, domag, armour, speedAtak) { this.rasa = "men"; money = 200; }
+        public int MoneyWin()
         {
-            if(rasamob=="Monster")
-            {
-                this.money += 50;
-            }
-            else if(rasamob== "Bosmonster")
-            {
-                this.money += 200;
-            }
-            return this.money;
             
-            
+            return money;
+
         }
-
-
-
-
+        
 
 
 
@@ -43,7 +30,7 @@ namespace RPG
 
         }
         public Magic(string name, int power, int xp, int domag, int armour, int speedAtak)
-           : base(name, power, xp, domag, armour, speedAtak) { rasa = "magic"; MagicDomag += 10; }
+           : base(name, power, xp, domag, armour, speedAtak) { this.rasa = "magic"; MagicDomag += 10; }
         public override int Ataaka()
         {
 
@@ -66,7 +53,23 @@ namespace RPG
 
         }
         public Monster(string name, int power, int xp, int domag, int armour, int speedAtak)
-            : base(name, power, xp, domag, armour, speedAtak) { rasa = "Monster "; }
+            : base(name, power, xp, domag, armour, speedAtak) { this.rasa = "Monster"; }
+
+        public int Moneyplus(int money,string rasa)
+        {
+            if(this.rasa=="Monster")
+            {
+                money += 50;
+            }
+            else if(this.rasa== "Bosmonster")
+            {
+                money += 200;
+            }
+            return money;
+            
+            
+        }
+
 
 
     }
@@ -89,7 +92,7 @@ namespace RPG
 
 
         }
-        public virtual int Zachita(int attaka)
+        public override int Zachita(int attaka)
         {
 
 
