@@ -6,21 +6,21 @@ namespace RPG
 {
     abstract class BassKlass
     {
-        
+
         private protected string Name = null;
 
-        private protected string rasa=null;
-        private protected int lvl=0;
-        private protected int  power = 0;
-        private protected int xp= 0;
-        
+        private protected string rasa = null;
+        private protected int lvl = 0;
+        private protected int power = 0;
+        private protected int xp = 0;
+
         private protected int domag = 0;
         private protected int armour = 0;
         private protected int money = 0;
         private protected int speedAtak = 0;
         private protected int MagicDomag = 0; //+урон для магия 
         private protected Random rnd = new Random();
-     
+
 
 
 
@@ -28,40 +28,44 @@ namespace RPG
         {
 
         }
-        public BassKlass(string name,int lvl ,int power,int xp,int domag,int armour,int money ,int speedAtak)
-        
+        public int LeavedXp() 
+        {
+            return xp;
+        }
+        public BassKlass(string name, int power, int xp, int domag, int armour,  int speedAtak)
+
         {
             this.Name = name;
-            this.lvl = lvl;
+            this.lvl = 0;
             this.power = power;
             this.xp = xp;
-            
+
             this.domag = domag;
             this.armour = armour;
-            this.money = money;
+            this.money = 0;
             this.speedAtak = speedAtak;
-            
+
 
         }
-        public virtual  int Ataaka()
+        public virtual int Ataaka()
         {
 
+
             
-            Random rnd = new Random();
             int dop = rnd.Next(4, 8);
-            int attaka = (domag + power+dop) * speedAtak;
+            int attaka = (domag + power + dop) * speedAtak;
             return attaka;
 
-            
-            
+
+
         }
 
 
-        public virtual void Zachita(int attaka)
+        public virtual int Zachita(int attaka)
         {
-            
 
-            Random rnd = new Random();
+
+           
 
             int armour1 = armour * rnd.Next(2, 4);
 
@@ -70,9 +74,12 @@ namespace RPG
                 xp = (armour1 + xp) - attaka;
                 if (xp < 0)
                     xp = 0;
+
+                return attaka;
             }
+            else { return 0; }
         }
-        public bool lifeGeroi() { return xp > 0; }
+        public bool IsAlive() { return xp > 0; }
 
         public void lvlup()
         {
@@ -84,7 +91,7 @@ namespace RPG
             else if (2 == lvlup)
                 domag += 4;
             else if (3 == lvlup)
-                armour += 4; 
+                armour += 4;
         }
         public void proverka()
         {
@@ -97,6 +104,6 @@ namespace RPG
 
 
 
-           
-    
+
+
 }
